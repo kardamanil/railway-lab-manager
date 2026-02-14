@@ -341,4 +341,4 @@ System returns:
 
 # 📜 License
 
-Developed for laboratory automation and internal reporting use.
+Developed for laboratory automation and internal reporting use by ANIL KARDAM.
