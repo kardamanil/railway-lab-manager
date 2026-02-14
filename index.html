@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Indian Railways Laboratory Management System (CMT)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Indian Railways Laboratory Management System (CMT)</h1>
+    <p>Web workflow for Water, Lube Oil, Grease, Diesel, and Misc samples</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>UI 1: Category</h2>
+      <div class="grid-5" id="categoryButtons"></div>
+    </section>
+
+    <section class="card hidden" id="sampleDetailsCard">
+      <h2>UI 2: Sample Entry & Rules</h2>
+      <form id="sampleForm">
+        <div class="grid-2">
+          <label>Letter No.
+            <input required name="letterNo" />
+          </label>
+          <label>Date Received
+            <input required type="date" name="receivedDate" />
+          </label>
+          <label>Railway Zone
+            <select required name="zone" id="zoneSelect"></select>
+          </label>
+          <label id="divisionWrapper" class="hidden">Division (Required for NWR)
+            <input name="division" id="divisionInput" />
+          </label>
+          <label>Received From
+            <input required name="receivedFrom" />
+          </label>
+          <label>Sample Name
+            <input required name="sampleName" />
+          </label>
+          <label>Standard
+            <input list="standardList" id="standardSearch" placeholder="Search like IS 10500" />
+            <datalist id="standardList"></datalist>
+          </label>
+        </div>
+
+        <div id="entryModeArea"></div>
+
+        <h3>Tests under selected standard</h3>
+        <div id="testsContainer"></div>
+
+        <button type="submit">Continue to UI 3</button>
+      </form>
+    </section>
+
+    <section class="card hidden" id="dataEntryCard">
+      <h2>UI 3: Data Entry</h2>
+      <div id="sampleTabs"></div>
+      <form id="dataEntryForm"></form>
+      <button id="saveDataBtn" class="hidden">Go to UI 5</button>
+    </section>
+
+    <section class="card hidden" id="submitCard">
+      <h2>UI 5: Submission & Billing</h2>
+      <label class="inline-row">Test Charges Applicable?
+        <select id="chargesApplicable">
+          <option value="no">No</option>
+          <option value="yes">Yes</option>
+        </select>
+      </label>
+      <div id="billingTable"></div>
+      <button id="finalSubmitBtn">Submit Record</button>
+      <p id="submitStatus"></p>
+    </section>
+
+    <section class="card" id="analyticsCard">
+      <h2>Reports & Analytics</h2>
+      <div class="query-grid">
+        <button data-query="waterCount">Water Count</button>
+        <button data-query="lubeCount">Lube Count</button>
+        <button data-query="dieselCount">Diesel Count</button>
+        <button data-query="testLoad">Test Load</button>
+        <button data-query="totalWorkload">Total Workload</button>
+      </div>
+      <div class="grid-3">
+        <label>Year <input type="number" id="queryYear" value="2026" /></label>
+        <label>Zone <input id="queryZone" placeholder="Optional" /></label>
+        <label>Division <input id="queryDivision" placeholder="Optional" /></label>
+      </div>
+      <label>Specific Test Name <input id="queryTestName" placeholder="e.g. Flash Point" /></label>
+      <pre id="queryOutput"></pre>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
